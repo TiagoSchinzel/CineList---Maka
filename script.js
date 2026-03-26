@@ -42,21 +42,19 @@ async function buscarFilme() {
     const nomeFilme = inputBusca.value.trim();
     if (!nomeFilme) return alert("Digite o nome de um filme! 🐾");
 
-    // MONTANDO A URL CORRETAMENTE:
+    // ESTA LINHA ABAIXO PRECISA ESTAR EXATAMENTE ASSIM:
     const url = "https://api.themoviedb.org" + API_KEY + "&query=" + encodeURIComponent(nomeFilme) + "&language=pt-BR";
 
-    try {
-        console.log("Tentando conectar em:", url); 
-        const response = await fetch(url);
-        
-        if (!response.ok) throw new Error("Erro na API: " + response.status);
+    console.log("Tentando conectar em:", url); 
 
+    try {
+        const response = await fetch(url);
         const data = await response.json();
 
         if (data.results && data.results.length > 0) {
-            const resultadoValido = data.results.find(item => item.media_type !== 'person');
-            if (resultadoValido) {
-                adicionarCardNaTela(resultadoValido);
+            const resultado = data.results.find(item => item.media_type !== 'person');
+            if (resultado) {
+                adicionarCardNaTela(resultado);
                 inputBusca.value = ""; 
             }
         } else {
@@ -64,7 +62,6 @@ async function buscarFilme() {
         }
     } catch (error) {
         console.error("Erro detalhado:", error);
-        alert("Erro ao conectar! Verifique se a sua API_KEY está correta no topo do script.js");
     }
 }
 
