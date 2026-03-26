@@ -42,24 +42,16 @@ async function buscarFilme() {
     const nomeFilme = inputBusca.value.trim();
     if (!nomeFilme) return alert("Digite o nome de um filme! 🐾");
 
-    // IMPORTANTE: Usei HTTPS e conferi o link da API v3 do TMDB
-   // O segredo está no '?' depois de 'multi'
-const url = "https://api.themoviedb.org" + API_KEY + "&query=" + encodeURIComponent(nomeFilme) + "&language=pt-BR";
-
-
-
+    // MONTANDO A URL CORRETAMENTE:
+    const url = "https://api.themoviedb.org" + API_KEY + "&query=" + encodeURIComponent(nomeFilme) + "&language=pt-BR";
 
     try {
-        console.log("Tentando conectar em:", url); // Veja se o link aparece certo no F12
+        console.log("Tentando conectar em:", url); 
         const response = await fetch(url);
         
-        if (!response.ok) {
-            // Se a chave estiver errada, o erro vai aparecer aqui
-            throw new Error(`Erro na API: ${response.status}`);
-        }
+        if (!response.ok) throw new Error("Erro na API: " + response.status);
 
         const data = await response.json();
-        console.log("Sucesso!", data);
 
         if (data.results && data.results.length > 0) {
             const resultadoValido = data.results.find(item => item.media_type !== 'person');
@@ -68,13 +60,14 @@ const url = "https://api.themoviedb.org" + API_KEY + "&query=" + encodeURICompon
                 inputBusca.value = ""; 
             }
         } else {
-            alert("Nenhum filme encontrado com esse nome! 😿");
+            alert("Nenhum filme encontrado! 😿");
         }
     } catch (error) {
         console.error("Erro detalhado:", error);
-        alert("Erro ao conectar! Dica: Abra o console (F12) para ver o erro em vermelho.");
+        alert("Erro ao conectar! Verifique se a sua API_KEY está correta no topo do script.js");
     }
 }
+
 
 // Vincula o clique do botão à função
 if (btnBusca) {
