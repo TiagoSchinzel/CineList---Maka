@@ -25,20 +25,19 @@
     <div class="grid-container" id="upcoming-list">
         
         <!-- ADICIONE O EXEMPLO AQUI (DENTRO DA DIV 'upcoming-list') -->
-        <div class="movie-card">
-            <img src="https://image.tmdb.org" alt="Poster">
-            <div class="movie-info">
-                <h4>Moana 2</h4>
-                <p>Lança em: 27/11/2024</p>
-                <!-- No seu index.html, dentro da lista de cronograma -->
-<a id="link-agenda" class="btn-calendar" href="#" onclick="prepararLink(event, 'Moana 2', '20241127')">
-    🐾 Salvar na Agenda
-</a>
-            </div>
+       <div class="movie-card" id="card-1"> <!-- Adicionei um ID para o JS saber qual remover -->
+    <img src="https://image.tmdb.org" alt="Poster">
+    <div class="movie-info">
+        <h4>Moana 2</h4>
+        <p>Lança em: 27/11/2024</p>
+        <div class="buttons-row">
+            <a class="btn-calendar" href="#" onclick="prepararLink(event, 'Moana 2', '20241127')">🐾 Agenda</a>
+            <!-- NOVO BOTÃO DE CHECK -->
+            <button class="btn-check" onclick="marcarComoAssistido('card-1')">✅ Vi!</button>
         </div>
-        <!-- FIM DO EXEMPLO -->
-
     </div>
+</div>
+
 </section>
 
         <!-- Listas de Status -->
