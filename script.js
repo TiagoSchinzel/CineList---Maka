@@ -32,42 +32,43 @@ function marcarComoAssistido(idCard) {
         listaAssistidos.appendChild(card);
     }, 500);
 }
-const API_KEY = '865882676767606353986708e3305a41'; 
+const API_KEY = '738c1218fbddc9a52409e0081c55a76f'; 
 const inputBusca = document.querySelector('.search-container input');
 const btnBusca = document.querySelector('.btn-add'); // Ajustado para a classe correta
 const listaWatchlist = document.getElementById('watchlist');
 
+// Substitua a sua função buscarFilme por esta:
 async function buscarFilme() {
     const nomeFilme = inputBusca.value.trim();
-    if (!nomeFilme) {
-        alert("Digite o nome de um filme, miau! 🐾");
-        return;
-    }
+    if (!nomeFilme) return alert("Digite o nome de um filme! 🐾");
 
+    // IMPORTANTE: Usei HTTPS e conferi o link da API v3 do TMDB
     const url = `https://api.themoviedb.org{API_KEY}&query=${encodeURIComponent(nomeFilme)}&language=pt-BR`;
 
     try {
+        console.log("Tentando conectar em:", url); // Veja se o link aparece certo no F12
         const response = await fetch(url);
-        const data = await response.json();
         
-        console.log("Dados recebidos:", data); // Verifique se isso aparece no F12
+        if (!response.ok) {
+            // Se a chave estiver errada, o erro vai aparecer aqui
+            throw new Error(`Erro na API: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Sucesso!", data);
 
         if (data.results && data.results.length > 0) {
-            // Pegamos o primeiro resultado que seja filme ou série (ignora pessoas)
             const resultadoValido = data.results.find(item => item.media_type !== 'person');
-            
             if (resultadoValido) {
                 adicionarCardNaTela(resultadoValido);
                 inputBusca.value = ""; 
-            } else {
-                alert("Não achei um filme com esse nome... 😿");
             }
         } else {
-            alert("Nenhum resultado encontrado! 🐾");
+            alert("Nenhum filme encontrado com esse nome! 😿");
         }
     } catch (error) {
-        console.error("Erro na busca:", error);
-        alert("Erro ao conectar com a lista de filmes. Verifique a internet! 🐾");
+        console.error("Erro detalhado:", error);
+        alert("Erro ao conectar! Dica: Abra o console (F12) para ver o erro em vermelho.");
     }
 }
 
