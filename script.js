@@ -44,7 +44,8 @@ async function buscarFilme() {
 
     // IMPORTANTE: Usei HTTPS e conferi o link da API v3 do TMDB
    // O segredo está no '?' depois de 'multi'
-const url = `https://api.themoviedb.org{API_KEY}&query=${encodeURIComponent(nomeFilme)}&language=pt-BR`;
+const url = "https://api.themoviedb.org" + API_KEY + "&query=" + encodeURIComponent(nomeFilme) + "&language=pt-BR";
+
 
 
     try {
