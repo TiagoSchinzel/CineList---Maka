@@ -48,6 +48,7 @@ const url = "https://api.themoviedb.org" + API_KEY + "&query=" + encodeURICompon
 
 
 
+
     try {
         console.log("Tentando conectar em:", url); // Veja se o link aparece certo no F12
         const response = await fetch(url);
