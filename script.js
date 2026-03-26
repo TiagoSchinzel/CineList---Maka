@@ -32,7 +32,7 @@ function marcarComoAssistido(idCard) {
         listaAssistidos.appendChild(card);
     }, 500);
 }
-const API_KEY = '738c1218fbddc9a52409e0081c55a76f'; 
+const API_KEY = "738c1218fbddc9a52409e0081c55a76f"; 
 const inputBusca = document.querySelector('.search-container input');
 const btnBusca = document.querySelector('.btn-add'); // Ajustado para a classe correta
 const listaWatchlist = document.getElementById('watchlist');
