@@ -43,7 +43,9 @@ async function buscarFilme() {
     if (!nomeFilme) return alert("Digite o nome de um filme! 🐾");
 
     // IMPORTANTE: Usei HTTPS e conferi o link da API v3 do TMDB
-    const url = `https://api.themoviedb.org{API_KEY}&query=${encodeURIComponent(nomeFilme)}&language=pt-BR`;
+   // O segredo está no '?' depois de 'multi'
+const url = `https://api.themoviedb.org{API_KEY}&query=${encodeURIComponent(nomeFilme)}&language=pt-BR`;
+
 
     try {
         console.log("Tentando conectar em:", url); // Veja se o link aparece certo no F12
