@@ -1,0 +1,121 @@
+:root {
+    --bg-color: #fff0f5; /* Rosa lavanda bem clarinho */
+    --card-bg: #ffffff;
+    --accent-color: #ffb6c1; /* Rosa pastel (Light Pink) */
+    --text-color: #5d4037; /* Marrom suave para facilitar a leitura */
+    --secondary-color: #ffdae0;
+}
+
+body {
+    font-family: 'Quicksand', 'Segoe UI', sans-serif; /* Fonte arredondada e fofa */
+    background-color: var(--bg-color);
+    /* Adicionando gatinhos sutis no fundo */
+    background-image: url('https://www.transparenttextures.com'), 
+                      url('https://cdn-icons-png.flaticon.com');
+    background-size: auto, 100px;
+    background-attachment: fixed;
+    background-blend-mode: overlay;
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #ff8da1;
+    text-shadow: 2px 2px #ffffff;
+}
+
+/* Barra de busca fofinha */
+.search-container input {
+    padding: 12px;
+    width: 250px;
+    border-radius: 20px; /* Bordas bem redondas */
+    border: 2px solid var(--accent-color);
+    outline: none;
+}
+
+.search-container button {
+    padding: 10px 25px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.search-container button:hover {
+    transform: scale(1.1); /* Efeito de pulo ao passar o mouse */
+    background-color: #ff8da1;
+}
+
+/* Layout das Colunas */
+.list-column {
+    background: rgba(255, 255, 255, 0.8); /* Branco translúcido */
+    padding: 20px;
+    border-radius: 25px;
+    border: 3px dashed var(--accent-color); /* Borda tracejada fofa */
+    box-shadow: 0 8px 15px rgba(255, 182, 193, 0.3);
+}
+
+/* Estilo do Card do Filme */
+.movie-card {
+    background: var(--card-bg);
+    margin-bottom: 15px;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid var(--secondary-color);
+    transition: 0.3s;
+}
+
+.movie-card:hover {
+    border-color: var(--accent-color);
+}
+
+.movie-card img {
+    width: 60px;
+    height: 90px;
+    border-radius: 10px 0 0 10px;
+    object-fit: cover;
+}
+
+/* Adicionando um ícone de gatinho no título da seção */
+h2::before {
+    content: '🐾 ';
+}
+.btn-calendar {
+    /* Faz o link se comportar como um bloco/botão */
+    display: inline-block;
+    text-decoration: none; /* Tira o sublinhado azul */
+    
+    /* Cores e Fofura */
+    background-color: #ffdae0; /* Rosa clarinho */
+    color: #d81b60;           /* Letra rosa escura */
+    border: 2px solid #ffb6c1; /* Borda rosa pastel */
+    border-radius: 15px;       /* Bordas arredondadas */
+    
+    /* Espaçamento interno */
+    padding: 8px 15px;
+    margin-top: 10px;
+    
+    /* Fonte */
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.85rem;
+    font-weight: bold;
+    
+    /* Animação */
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-calendar:hover {
+    background-color: #ffb6c1; /* Inverte as cores no hover */
+    color: white;
+    transform: scale(1.05);    /* Dá um leve pulinho */
+}
+
